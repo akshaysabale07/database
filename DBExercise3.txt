@@ -1,0 +1,128 @@
+ sabale Akshay
+exercise:3
+
+
+mysql> select concat(upper(substr(Sname,1,1)),lower(substr(Sname,2)))from s;
++---------------------------------------------------------+
+| concat(upper(substr(Sname,1,1)),lower(substr(Sname,2))) |
++---------------------------------------------------------+
+| Anthony                                                 |
+| Jack                                                    |
+| Sansa                                                   |
+| Dani                                                    |
+| La                                                      |
+| Bloke                                                   |
++---------------------------------------------------------+
+6 rows in set (0.00 sec)
+
+
+2. select upper(Sname) from s;
++--------------+
+| upper(Sname) |
++--------------+
+| ANTHONY      |
+| JACK         |
+| SANSA        |
+| DANI         |
++--------------+
+4 rows in set (0.00 sec)
+
+mysql> select lower(Sname) from s;
++--------------+
+| lower(Sname) |
++--------------+
+| anthony      |
+| jack         |
+| sansa        |
+| dani         |
++--------------+
+4 rows in set (0.00 sec)
+
+mysql> select lpad (Sname,25,' ')from s;
++---------------------------+
+| lpad (Sname,25,' ')       |
++---------------------------+
+|                   anthony |
+|                      jack |
+|                     sansa |
+|                      dani |
++---------------------------+
+4 rows in set (0.00 sec)
+
+mysql> select replace(Sname,'la','ro')from emp;
+ERROR 1146 (42S02): Table 'cdac.emp' doesn't exist
+mysql> select replace(Sname,'la','ro')from s;
++--------------------------+
+| replace(Sname,'la','ro') |
++--------------------------+
+| anthony                  |
+| jack                     |
+| sansa                    |
+| dani                     |
++--------------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from s;
++------+---------+--------+--------+
+| S#   | Sname   | Status | City   |
++------+---------+--------+--------+
+| S1   | anthony |     10 | London |
+| S2   | jack    |     20 | paris  |
+| S3   | sansa   |     30 | Athens |
+| S4   | dani    |     40 | London |
++------+---------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select replace(Sname,'la','ro')from s;
++--------------------------+
+| replace(Sname,'la','ro') |
++--------------------------+
+| anthony                  |
+| jack                     |
+| sansa                    |
+| dani                     |
++--------------------------+
+
+mysql> select replace(replace(Sname,'l','r'),'a','o') from s;
++-----------------------------------------+
+| replace(replace(Sname,'l','r'),'a','o') |
++-----------------------------------------+
+| onthony                                 |
+| jock                                    |
+| sonso                                   |
+| doni                                    |
+| ro                                      |
++-----------------------------------------+
+5 rows in set (0.00 sec)
+
+mysql> select replace(replace(Sname,'l','r'),'a','o') as 'Sname' from s;
++---------+
+| Sname   |
++---------+
+| onthony |
+| jock    |
+| sonso   |
+| doni    |
+| ro      |
++---------+
+5 rows in set (0.00 sec)
+ 
+
+mysql> select LENGTH(Sname)from s;
++---------------+
+| LENGTH(Sname) |
++---------------+
+|             7 |
+|             4 |
+|             5 |
+|             4 |
+|             2 |
++---------------+
+5 rows in set (0.02 sec)
+mysql> select * from s where soundex(Sname)=soundex('BLOoKkE');
++------+-------+--------+--------+
+| S#   | Sname | Status | City   |
++------+-------+--------+--------+
+| S6   | Bloke |     60 | Canada |
++------+-------+--------+--------+
+1 row in set (0.00 sec)
