@@ -1,0 +1,24 @@
+Akshay Sabale
+200240520013
+
+Assingment 10
+
+1.mysql> select distinct s1.sname,s2.sname from salespeople s1,salespeople s2 where s1.sname>s2.sname and s1.city=s2.city;
++-------+--------+
+| sname | sname  |
++-------+--------+
+| Peel  | Motika |
++-------+--------+
+1 row in set (0.00 sec)
+
+----------------------------------------------------------------------------------------------------------------
+2.
+mysql> select cname,city from customers where rating=(select rating from customers where cname='hoffman');
++---------+--------+
+| cname   | city   |
++---------+--------+
+| Hoffman | London |
+| Clemens | London |
+| Pereira | Rome   |
++---------+--------+
+3 rows in set (0.00 sec)
