@@ -1,0 +1,30 @@
+Akshay Sabale
+200240520013
+Assingment No :-11
+----------------------------------------------------------------------------------------------------------------------------------
+1.mysql> select onum,cnum from orders where cnum=(select cnum from customers where cname='Cisneros');
++------+------+
+| onum | cnum |
++------+------+
+| 3001 | 2008 |
+| 3006 | 2008 |
++------+------+
+2 rows in set (0.00 sec)
+-------------------------------------------------------------------------------------------------------------------------------------
+
+2.mysql> select cname,rating from customers where cnum in (select cnum from orders where amt>(select avg(amt)from orders));
++---------+--------+
+| cname   | rating |
++---------+--------+
+| Liu     |    200 |
+| Clemens |    100 |
++---------+--------+
+2 rows in set (0.09 sec)
+----------------------------------------------------------------------------------------------------------------------------------------
+3.mysql> select snum,sum(amt) from orders group by snum  having sum(amt)>(select max(amt) from orders);
++------+----------+
+| snum | sum(amt) |
++------+----------+
+| 1001 | 15382.07 |
++------+----------+
+1 row in set (0.00 sec)
