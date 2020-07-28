@@ -1,0 +1,43 @@
+
+Akshay Sabale
+
+mysql> use akshay
+Database changed
+
+
+mysql> select cname,city, rating from customers where rating>200 union select cname,city ,rating from customers where rating<=200;
++----------+----------+--------+
+| cname    | city     | rating |
++----------+----------+--------+
+| Grass    | Berlin   |    300 |
+| Cisneros | San Jose |    300 |
+| Hoffman  | London   |    100 |
+| Giovanni | Rome     |    200 |
+| Liu      | San Jose |    200 |
+| Clemens  | London   |    100 |
+| Pereira  | Rome     |    100 |
++----------+----------+--------+
+7 rows in set (0.00 sec)
+
+
+mysql> select sname,snum,cname from salespeople join customers using(snum)where snum in (select snum from customers group by snum having count(snum)>1)order by sname,cname;
++--------+------+---------+
+| sname  | snum | cname   |
++--------+------+---------+
+| Peel   | 1001 | Clemens |
+| Peel   | 1001 | Hoffman |
+| Serres | 1002 | Grass   |
+| Serres | 1002 | Liu     |
++--------+------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select snum from salespeople where city='San Jose' UNION select distinct snum from orders where snum in (select snum from orders where odate like '%-10-03');
++------+
+| snum |
++------+
+| 1002 |
+| 1007 |
+| 1001 |
+| 1004 |
++------+
+4 rows in set, 1 warning (0.00 sec)
