@@ -1,0 +1,31 @@
+Akshay Sabale
+  
+Student id-:200240520013
+
+Assignment No:-19
+-------------------------------------------------------------------------------------------
+use akshay;
+1) Create a view that shows all of the customers who have the highest ratings.
+ 
+ Ans:- 
+      create view akshayv as select * from customer
+      where rating=(select max(rating) from customer);
+      select * from akshayv;
+------------------------------------------------------------------------------------------
+2) Create a view that shows the number of salespeople in each city.  
+ Ans:-  create view akshayc as select distinct city,count(city) from salespeople group by city;
+select * from akshayc;
+-----------------------------------------------------------------------------------------
+
+3) Create a view that shows the average and total orders for each salesperson after his or her name. Assume all names are unique. 
+ Ans:- create view akshayavg as select sname, avg(onum), count(onum)
+        from salespeople join orders using (snum)group by sname;
+
+------------------------------------------------------------------------------------------
+4) Create a view that shows each salesperson with multiple customers.
+
+ Ans:- create view akshay_customer as select cname, sname 
+     from salespeople join customer using(snum);
+     select * from akshay_customer;
+
+--------------------------------------------------------------------------------------------
