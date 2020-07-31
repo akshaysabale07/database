@@ -1,0 +1,47 @@
+Akshay Sabale
+200240520013
+Assingment No.21
+--------------------------------------------------------------------
+
+1) Give Amit the right to change the ratings of the customers.
+grant update on customers to Amit ;
+revoke update on customers to Amit ;
+-------------------------------------------------------------------
+2.Give Manoj the right to give other users the right to query the Orders table.
+ grant select on orders to akshay with grant option;
+
+grant select on akshay.orders to Sandesh;
+
+grant update on akshay.orders to Sandesh;
+-----------------------------------------------------------------------
+3) Take the INSERT privilege on Salespeople away from Ajita
+revoke insert on salespeople from Ajita;
+--------------------------------------------------------------------------
+4) Grant Abhijeet the right to insert or update the Customers table while keeping her
+possible rating values in the range of 100 to 500.
+create or replace view vr as
+select * from customer where rating BETWEEN 100 AND 500 with check option;
+
+grant update on update on vr to Ajita;
+
+
+insert into vr values(3000, 'ak','satara',800,7000);
+
+
+----------------------------------------------------------------------------------
+5) Allow Vikram to query the Customers table, but restrict his access to those
+customers whose rating is the lowest.
+create or replace view aks as
+select * customer where rating not in
+    (select min(rating)from customer);
+
+ grant select on aks to Vikaram; 
+ 
+---------------------------------------------------------------------------------------
+
+
+
+ 
+
+
+
